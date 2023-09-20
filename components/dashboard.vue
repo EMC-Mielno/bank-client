@@ -1,5 +1,4 @@
 <script setup lang="ts">
-
 import Transfers from "~/components/transfers.vue";
 </script>
 

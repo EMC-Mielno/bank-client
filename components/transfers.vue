@@ -1,27 +1,20 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
   <div class="transfer-buttons">
-    <div class="transfer-button">
+    <NuxtLink to="/transfer-number" class="transfer-button">
       <img src="/account-transfer.svg" alt="" class="transfer-button-icon">
-      <p class="transfer-button-name">
-        <NuxtLink to="/transfer">By account number</NuxtLink>
-      </p>
-    </div>
-    <div class="transfer-button">
+      <p class="transfer-button-name">By account number</p>
+    </NuxtLink>
+    <NuxtLink to="/transfer-nickname" class="transfer-button">
       <img src="/nickname-transfer.svg" alt="" class="transfer-button-icon">
-      <p class="transfer-button-name">
-          <NuxtLink to="/transfer">By nickname</NuxtLink>
-      </p>
-    </div>
-    <div class="transfer-button">
+      <p class="transfer-button-name">By nickname</p>
+    </NuxtLink>
+    <NuxtLink to="/transfer-withdraw" class="transfer-button">
       <img src="/withdraw-icon.svg" alt="" class="transfer-button-icon">
-      <p class="transfer-button-name">
-          <NuxtLink to="/transfer">Withdraw request</NuxtLink>
-      </p>
-    </div>
+      <p class="transfer-button-name">Withdraw</p>
+    </NuxtLink>
   </div>
 </template>
 
