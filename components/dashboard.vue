@@ -9,7 +9,7 @@ import Transfers from "~/components/transfers.vue";
   <suggestions/>
   <h2 class="main-block-header">Transfer</h2>
   <transfers/>
-  <h2 class="main-block-header"><NuxtLink to="/history">Recent transactions ></NuxtLink></h2>
+  <h2 class="main-block-header"><NuxtLink to="/transactions">Recent transactions ></NuxtLink></h2>
   <transaction/>
 </template>
 
