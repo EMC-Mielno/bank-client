@@ -19,9 +19,35 @@ a {
   text-decoration: none;
 }
 
+select, input {
+  background: #E6E8EA;
+  padding: 15px;
+  border: none;
+  border-radius: 5px;
+  width: -webkit-fill-available;
+  outline: none;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+select:last-child, input:last-child {
+  margin-bottom: 0;
+}
+
+input[type="submit"] {
+  background: #121212;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+input[type="submit"]:hover {
+  background: #3b3b3b;
+}
 .main-block-header {
   margin: 25px 0;
 }
+
 
 //Skeleton
 .skeleton {
