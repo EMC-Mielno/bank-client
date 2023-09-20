@@ -1,11 +1,15 @@
 <script setup lang="ts">
 
+import TheHeader from "~/components/TheHeader.vue";
 </script>
 
 <template>
   <div id="main-app">
     <TheAside/>
-    <NuxtPage/>
+    <div class="main-content">
+      <TheHeader/>
+      <NuxtPage/>
+    </div>
   </div>
 </template>
 
@@ -19,4 +23,7 @@
   gap: 25px;
 }
 
+.main-content {
+  width: 100%;
+}
 </style>

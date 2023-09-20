@@ -23,7 +23,9 @@
           <p>0 ₲</p>
         </div>
         <div class="new-product-button">
-          <button>+</button>
+          <NuxtLink to="/new">
+            <button>+</button>
+          </NuxtLink>
           <article>
             <h4>New product</h4>
             <p>Account, business acc...</p>

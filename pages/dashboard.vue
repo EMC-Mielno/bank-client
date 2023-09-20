@@ -5,7 +5,6 @@ import TheHeader from "~/components/TheHeader.vue";
 
 <template>
   <div id="app">
-    <TheHeader/>
     <dashboard/>
   </div>
 </template>

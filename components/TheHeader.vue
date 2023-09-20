@@ -10,10 +10,10 @@
           <NuxtLink to="/dashboard">main</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/transfers">Transfers</NuxtLink>
+          <NuxtLink to="/transfer">Transfers</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/history">history</NuxtLink>
+          <NuxtLink to="/transactions">Transactions</NuxtLink>
         </li>
       </ul>
       <ul>
