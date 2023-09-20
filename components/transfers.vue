@@ -7,19 +7,19 @@
     <div class="transfer-button">
       <img src="/account-transfer.svg" alt="" class="transfer-button-icon">
       <p class="transfer-button-name">
-        By account number
+        <NuxtLink to="/transfer/account-number">By account number</NuxtLink>
       </p>
     </div>
     <div class="transfer-button">
       <img src="/nickname-transfer.svg" alt="" class="transfer-button-icon">
       <p class="transfer-button-name">
-        By nickname
+          <NuxtLink to="/transfer/nickname">By nickname</NuxtLink>
       </p>
     </div>
     <div class="transfer-button">
       <img src="/withdraw-icon.svg" alt="" class="transfer-button-icon">
       <p class="transfer-button-name">
-        Withdraw request
+          <NuxtLink to="/transfer/nickname">Withdraw request</NuxtLink>
       </p>
     </div>
   </div>
