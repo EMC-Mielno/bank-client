@@ -5,7 +5,7 @@
 <template>
   <div>
     <aside>
-      <img src="logo.png" alt="Logo" class="logo">
+      <img src="/logo.png" alt="Logo" class="logo">
       <div class="aside-wallet">
         <h2>Wallet</h2>
         <div class="aside-accounts">

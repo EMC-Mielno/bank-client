@@ -33,6 +33,34 @@
       </div>
     </div>
     <div class="transaction-day">
+      <h6>Sunday, 14 september</h6>
+      <hr>
+      <div class="transactions">
+        <div class="transaction">
+          <img src="/money-transfer.svg" alt="" class="transaction-logo">
+          <article>
+            <div class="transaction-info">
+              <div class="transaction-info">
+                <b>HarryPotter</b>
+              </div>
+              <span class="money">-50 ₲</span>
+            </div>
+            <p>Money transfer</p>
+          </article>
+        </div>
+        <div class="transaction">
+          <img src="/money-transfer.svg" alt="" class="transaction-logo">
+          <article>
+            <div class="transaction-info">
+              <b>HarryPotter</b>
+              <span class="money">-50 ₲</span>
+            </div>
+            <p>Money transfer</p>
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="transaction-day">
       <h6>Sunday, 13 september</h6>
       <hr>
       <div class="transactions">

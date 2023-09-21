@@ -19,6 +19,10 @@ a {
   text-decoration: none;
 }
 
+input[type=checkbox] {
+  width: min-content;
+}
+
 select, input {
   background: #E6E8EA;
   padding: 15px;
@@ -44,6 +48,7 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background: #3b3b3b;
 }
+
 .main-block-header {
   margin: 25px 0;
 }

@@ -6,10 +6,10 @@ import TheHeader from "~/components/TheHeader.vue";
 <template>
   <div id="main-app">
     <TheAside/>
-    <div class="main-content">
-      <TheHeader/>
-      <NuxtPage/>
-    </div>
+      <div class="main-content">
+        <TheHeader/>
+        <NuxtPage/>
+      </div>
   </div>
 </template>
 
@@ -19,11 +19,27 @@ import TheHeader from "~/components/TheHeader.vue";
 #main-app {
   display: flex;
   width: 1080px;
-  margin: 0 auto;
   gap: 25px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .main-content {
   width: 100%;
+  overflow: auto;
+}
+
+/*  scrollbar Chrome, Safari и Opera */
+.main-content::-webkit-scrollbar {
+  display: none;
+}
+
+/* scrollbar IE, Edge и Firefox */
+.main-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 </style>

@@ -5,14 +5,14 @@
 <template>
   <h2 class="main-block-header">Showcase</h2>
   <div class="showcase">
-    <div class="showcase-item">
+    <NuxtLink to="/open/account" class="showcase-item">
       <h3>Open an account</h3>
       <img src="/imgs/showcase/account.png" alt="">
-    </div>
-    <div class="showcase-item">
+    </NuxtLink>
+    <NuxtLink to="/open/business-account" class="showcase-item">
       <h3>Open a business account</h3>
-      <img src="/imgs/showcase/buisness-account.png" alt="">
-    </div>
+      <img src="/imgs/showcase/business-account.png" alt="">
+    </NuxtLink>
   </div>
 </template>
 
