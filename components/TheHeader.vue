@@ -7,13 +7,13 @@
     <header>
       <ul>
         <li>
-          <NuxtLink to="/dashboard">main</NuxtLink>
+          <NuxtLink to="dashboard">main</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/transfer-number">Transfers</NuxtLink>
+          <NuxtLink to="transfer-number">Transfers</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/transactions">Transactions</NuxtLink>
+          <NuxtLink to="transactions">Transactions</NuxtLink>
         </li>
       </ul>
       <ul>

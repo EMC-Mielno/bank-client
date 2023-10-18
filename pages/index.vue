@@ -1,5 +1,7 @@
 <script setup lang="ts">
-window.location.href='/dashboard'
+if (!process.server) {
+  window.location.href = '/dashboard'
+}
 </script>
 
 <template>

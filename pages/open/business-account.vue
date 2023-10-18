@@ -1,5 +1,6 @@
 <script setup lang="ts">
 
+import Hint from "~/components/hint.vue";
 </script>
 
 <template>
@@ -13,7 +14,7 @@
   </div>
   <h2 class="main-block-header">Fill in the form</h2>
   <form v-on:submit.prevent="">
-    <label for="cashback">Cashback percentage: <span class="hint-button">❔<span class="hint">The maximum percentage that will be returned to the user from the purchase price. You can specify from 0 to 30.</span></span></label>
+    <label for="cashback">Cashback percentage: <hint>The maximum percentage that will be returned to the user from the purchase price. You can specify from 0 to 30.</hint></label>
     <input type="number" name="cashback" id="cashback" placeholder="15%" min="0" max="30" pattern="\d{1,2}">
     <div class="checkbox">
       <input type="checkbox" id="scales" name="scales"/>
@@ -43,28 +44,5 @@ li {
 
 li:last-child {
   margin: 0;
-}
-
-span.hint-button:hover span.hint {
-  opacity: 1;
-}
-
-span.hint-button {
-  position: relative;
-  cursor: pointer;
-}
-
-span.hint {
-  position: absolute;
-  bottom: 0;
-  left: 30px;
-  width: 440px;
-  background: #f0f1f3;
-  padding: 15px;
-  border-radius: 10px;
-  line-height: 30px;
-  border: 1px solid;
-  opacity: 0;
-  transition: 0.2s;
 }
 </style>
