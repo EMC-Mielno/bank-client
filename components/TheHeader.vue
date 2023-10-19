@@ -1,4 +1,11 @@
 <script setup lang="ts">
+const router = useRouter();
+const token = useCookie('token')
+
+function logout() {
+  token.value = undefined
+  router.push('/auth')
+}
 
 </script>
 
@@ -17,13 +24,21 @@
         </li>
       </ul>
       <ul>
-        <li>logout</li>
+        <li class="logout" v-on:click="logout">logout</li>
       </ul>
     </header>
   </div>
 </template>
 
 <style scoped lang="scss">
+.logout {
+  cursor: pointer;
+}
+
+.logout:hover {
+  color: #363636;
+}
+
 header {
   display: flex;
   justify-content: space-between;

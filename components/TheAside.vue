@@ -1,21 +1,56 @@
 <script setup lang="ts">
+const nuxtApp = useNuxtApp()
 
+const {userData, pending, error} = nuxtApp.$user
+const router = useRouter();
+const token = useCookie('token')
+
+interface account {
+  account_id: string;
+  balance: string;
+  total_income: string;
+  total_outcome: string;
+  type: number;
+}
+
+let mainAccount: Ref<account[]> = ref([]);
+let additionalAccount: Ref<account[]> = ref([]);
+let businessAccount: Ref<account[]> = ref([]);
+
+watchEffect(() => {
+  if (!pending.value) {
+    try {
+      mainAccount = userData.value.accounts.filter((obj) => obj.type == 1)[0]
+      additionalAccount = userData.value.accounts.filter((obj) => obj.type == 2)
+      businessAccount = userData.value.accounts.filter((obj) => obj.type == 3)[0]
+    } catch (e) {
+      token.value = undefined
+      router.push('/auth')
+    }
+  }
+})
 </script>
 
 <template>
   <div>
     <aside>
-      <img src="/logo.png" alt="Logo" class="logo">
+      <NuxtLink to="/dashboard">
+        <img src="/logo.png" alt="Logo" class="logo">
+      </NuxtLink>
       <div class="aside-wallet">
         <h2>Wallet</h2>
         <div class="aside-accounts">
           <div class="aside-account">
-            <h2>525.00 ₲</h2>
+            <h2>{{ mainAccount.balance }} ₲</h2>
             <p>Total on your main account</p>
           </div>
+          <div class="aside-account" v-for="account in additionalAccount">
+            <h2>{{ account.balance }} ₲</h2>
+            <p>{{ account.name }}</p>
+          </div>
           <div class="aside-account">
-            <h2>1050.00 ₲</h2>
-            <p>Fund for the construction of the stadium</p>
+            <h2>{{ businessAccount.balance }} ₲</h2>
+            <p>Total on your business account</p>
           </div>
         </div>
         <div class="month-stat">

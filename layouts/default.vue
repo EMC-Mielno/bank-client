@@ -1,15 +1,55 @@
 <script setup lang="ts">
-
 import TheHeader from "~/components/TheHeader.vue";
+
+const runtimeConfig = useRuntimeConfig()
+const token = useCookie('token')
+const nuxtApp = useNuxtApp()
+
+function getUserData() {
+  const {
+    data: userData,
+    pending,
+    error,
+    refresh
+  } = useFetch(`${runtimeConfig.public.apiBase}/user`, {
+        onRequest({request, options}) {
+          options.headers = options.headers || {}
+          options.headers.authorization = token.value
+        }
+      }
+  )
+  nuxtApp.provide('user', {userData: userData, pending: pending, error: error, refresh: refresh})
+}
+
+function getUserTransaction() {
+  const {
+    data: userTransaction,
+    pending,
+    error,
+    refresh
+  } = useFetch(`${runtimeConfig.public.apiBase}/transactions?limit=1000`, {
+        onRequest({request, options}) {
+          options.headers = options.headers || {}
+          options.headers.authorization = token.value
+        }
+      }
+  )
+
+  nuxtApp.provide('transactions', {userTransaction: userTransaction, pending: pending, error: error, refresh: refresh})
+}
+
+getUserData()
+getUserTransaction()
+
 </script>
 
 <template>
   <div id="main-app">
     <TheAside/>
-      <div class="main-content">
-        <TheHeader/>
-        <NuxtPage/>
-      </div>
+    <div class="main-content">
+      <TheHeader/>
+      <NuxtPage/>
+    </div>
   </div>
 </template>
 
