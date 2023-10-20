@@ -3,8 +3,8 @@ export default defineNuxtConfig({
     devtools: {enabled: false},
     runtimeConfig: {
         public: {
-            apiBase: 'http://localhost:8080/api',
-            domainName: 'http://localhost:8080/api'
+            apiBase: 'http://ывап.рф:8080/api',
+            domainName: 'http://ывап.рф:8080/api'
         }
     }
 })
