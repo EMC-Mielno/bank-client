@@ -29,6 +29,7 @@ function login() {
   }).then((response) => {
     return response.json();
   }).then((data) => {
+    console.log(data)
     if (data['token']) {
       token.value = data['token']
       router.push('/')

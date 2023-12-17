@@ -11,7 +11,7 @@ function getUserData() {
     pending,
     error,
     refresh
-  } = useFetch(`${runtimeConfig.public.apiBase}/user`, {
+  } = useFetch(`${runtimeConfig.public.apiBase}/me`, {
         onRequest({request, options}) {
           options.headers = options.headers || {}
           options.headers.authorization = token.value
@@ -27,7 +27,7 @@ function getUserTransaction() {
     pending,
     error,
     refresh
-  } = useFetch(`${runtimeConfig.public.apiBase}/transactions?limit=1000`, {
+  } = useFetch(`${runtimeConfig.public.apiBase}/me/history`, {
         onRequest({request, options}) {
           options.headers = options.headers || {}
           options.headers.authorization = token.value
@@ -46,10 +46,10 @@ getUserTransaction()
 <template>
   <div id="main-app">
     <TheAside/>
-    <div class="main-content">
-      <TheHeader/>
-      <NuxtPage/>
-    </div>
+        <div class="main-content">
+          <TheHeader/>
+          <NuxtPage/>
+        </div>
   </div>
 </template>
 

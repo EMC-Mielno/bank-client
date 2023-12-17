@@ -35,7 +35,7 @@ function formatDate(dateString) {
           <article>
             <div class="transaction-info">
               <div class="transaction-info">
-                <b>{{ transaction.nickname }}</b>
+                <b>{{ transaction.sender_nickname }}</b>
               </div>
               <span class="money"> <span v-if="transaction.type==='OUT'">-</span> {{ transaction.amount }} ₲</span>
             </div>

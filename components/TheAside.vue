@@ -2,30 +2,45 @@
 const nuxtApp = useNuxtApp()
 
 const {userData, pending, error} = nuxtApp.$user
-const router = useRouter();
-const token = useCookie('token')
 
 interface account {
-  account_id: string;
-  balance: string;
-  total_income: string;
-  total_outcome: string;
-  type: number;
+  account_id: number;
+  type: string;
+  name: string;
+  total_income: number;
+  total_outcome: number;
+  balance: number;
+  account_number: string;
 }
 
-let mainAccount: Ref<account[]> = ref([]);
+let mainAccount: Ref<account> = ref({
+  "account_id": 0,
+  "type": "",
+  "name": "",
+  "total_income": 0,
+  "total_outcome": 0,
+  "balance": 0,
+  "account_number": ""
+});
 let additionalAccount: Ref<account[]> = ref([]);
-let businessAccount: Ref<account[]> = ref([]);
+// let businessAccount: Ref<account> = ref({
+//   "account_id": 0,
+//   "type": "",
+//   "name": "",
+//   "total_income": 0,
+//   "total_outcome": 0,
+//   "balance": 0,
+//   "account_number": ""
+// });
 
 watchEffect(() => {
   if (!pending.value) {
     try {
-      mainAccount = userData.value.accounts.filter((obj) => obj.type == 1)[0]
-      additionalAccount = userData.value.accounts.filter((obj) => obj.type == 2)
-      businessAccount = userData.value.accounts.filter((obj) => obj.type == 3)[0]
+      mainAccount = userData.value.accounts.filter((obj) => obj.type === 'MAIN')[0]
+      additionalAccount = userData.value.accounts.filter((obj) => obj.type === 'ADDITIONAL')
+      // businessAccount = userData.value.accounts.filter((obj) => obj.type === 'BUSINESS')[0]
     } catch (e) {
-      token.value = undefined
-      router.push('/auth')
+      console.error(e)
     }
   }
 })
@@ -48,14 +63,10 @@ watchEffect(() => {
             <h2>{{ account.balance }} ₲</h2>
             <p>{{ account.name }}</p>
           </div>
-          <div class="aside-account">
-            <h2>{{ businessAccount.balance }} ₲</h2>
-            <p>Total on your business account</p>
-          </div>
-        </div>
-        <div class="month-stat">
-          <h3>Spent this month</h3>
-          <p>0 ₲</p>
+<!--          <div class="aside-account">-->
+<!--            <h2>{{ businessAccount.balance }} ₲</h2>-->
+<!--            <p>Total on your business account</p>-->
+<!--          </div>-->
         </div>
         <div class="new-product-button">
           <NuxtLink to="/new">
