@@ -63,7 +63,7 @@ function transfer() {
       <select name="account_id" v-model="formData.sender_account" required>
         <option value="-1" selected disabled>--Please choose an account--</option>
         <option v-for="account in userData.accounts" v-bind:value="account.account_number">
-          {{ account.name }}
+          {{ account.name }} ({{ account.account_number}})
         </option>
       </select>
       <label for="account_id">Recipient's account number:</label>
