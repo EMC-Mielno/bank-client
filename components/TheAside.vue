@@ -47,7 +47,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div>
+  <div :key='userData'>
     <aside>
       <NuxtLink to="/dashboard">
         <img src="/logo.png" alt="Logo" class="logo">
@@ -58,15 +58,17 @@ watchEffect(() => {
           <div class="aside-account">
             <h2>{{ mainAccount.balance }} ₲</h2>
             <p>Total on your main account</p>
+            <p>{{mainAccount.account_number}}</p>
           </div>
           <div class="aside-account" v-for="account in additionalAccount">
             <h2>{{ account.balance }} ₲</h2>
             <p>{{ account.name }}</p>
+            <p>{{ account.account_number }}</p>
           </div>
-<!--          <div class="aside-account">-->
-<!--            <h2>{{ businessAccount.balance }} ₲</h2>-->
-<!--            <p>Total on your business account</p>-->
-<!--          </div>-->
+          <!--          <div class="aside-account">-->
+          <!--            <h2>{{ businessAccount.balance }} ₲</h2>-->
+          <!--            <p>Total on your business account</p>-->
+          <!--          </div>-->
         </div>
         <div class="new-product-button">
           <NuxtLink to="/new">

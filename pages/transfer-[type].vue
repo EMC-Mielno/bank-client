@@ -5,7 +5,7 @@ import Nickname from "~/components/transfers/nickname.vue";
 import Withdraw from "~/components/transfers/withdraw.vue";
 
 const route = useRoute()
-console.log(route.params.type)
+// console.log(route.params.type)
 const tab = ref(route.params.type)
 </script>
 
