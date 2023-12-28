@@ -1,5 +1,17 @@
 <script setup lang="ts">
 
+// import { PublicClientApplication } from "@azure/msal-browser";
+//
+// const msalConfig = {
+//   auth: {
+//     clientId: 'e432033e-7351-4cdf-9f87-7808e5b383cd',
+//     authority: "https://login.microsoftonline.com/consumers",
+//     redirectUri: "http://localhost:3000/",
+//   }
+// };
+//
+// const msalInstance = await PublicClientApplication.createPublicClientApplication(msalConfig);
+
 definePageMeta({
   layout: 'empty'
 })
@@ -15,6 +27,12 @@ let username: Ref<string> = ref('');
 let password: Ref<string> = ref('');
 
 function login() {
+
+  // msalInstance.loginPopup({
+  //   redirectUri: "http://localhost:3000/blank.html"
+  // });
+  //
+  // return
   const data = {
     nickname: username.value,
     password: password.value

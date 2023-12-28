@@ -37,9 +37,26 @@ function getUserTransaction() {
 
   nuxtApp.provide('transactions', {userTransaction: userTransaction, pending: pending, error: error, refresh: refresh})
 }
+function getUserWithdraws() {
+  const {
+    data: userWithdraws,
+    pending,
+    error,
+    refresh
+  } = useFetch(`${runtimeConfig.public.apiBase}/me/withdraw`, {
+        onRequest({request, options}) {
+          options.headers = options.headers || {}
+          options.headers.authorization = token.value
+        }
+      }
+  )
+
+  nuxtApp.provide('withdraws', {userWithdraws: userWithdraws, pending: pending, error: error, refresh: refresh})
+}
 
 getUserData()
 getUserTransaction()
+getUserWithdraws()
 
 </script>
 

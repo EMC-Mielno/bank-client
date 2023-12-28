@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import Hint from "~/components/hint.vue";
+import Hint from "~/components/ui/hint.vue";
 </script>
 
 <template>

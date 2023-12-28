@@ -1,28 +1,36 @@
 <script setup lang="ts">
+import Copy from "~/components/ui/copy.vue";
+
 const nuxtApp = useNuxtApp()
 
 const {userData, pending, error} = nuxtApp.$user
 
-interface account {
-  account_id: number;
-  type: string;
-  name: string;
-  total_income: number;
-  total_outcome: number;
-  balance: number;
-  account_number: string;
+function formatNumber(number) {
+  let strNumber = number.toString();
+  let formattedNumber = '··' + strNumber.slice(-4);
+  return formattedNumber;
 }
 
-let mainAccount: Ref<account> = ref({
-  "account_id": 0,
-  "type": "",
-  "name": "",
-  "total_income": 0,
-  "total_outcome": 0,
-  "balance": 0,
-  "account_number": ""
-});
-let additionalAccount: Ref<account[]> = ref([]);
+// interface account {
+//   account_id: number;
+//   type: string;
+//   name: string;
+//   total_income: number;
+//   total_outcome: number;
+//   balance: number;
+//   account_number: string;
+// }
+//
+// let mainAccount: Ref<account> = ref({
+//   "account_id": 0,
+//   "type": "",
+//   "name": "",
+//   "total_income": 0,
+//   "total_outcome": 0,
+//   "balance": 0,
+//   "account_number": ""
+// });
+// let additionalAccount: Ref<account[]> = ref([]);
 // let businessAccount: Ref<account> = ref({
 //   "account_id": 0,
 //   "type": "",
@@ -33,17 +41,17 @@ let additionalAccount: Ref<account[]> = ref([]);
 //   "account_number": ""
 // });
 
-watchEffect(() => {
-  if (!pending.value) {
-    try {
-      mainAccount = userData.value.accounts.filter((obj) => obj.type === 'MAIN')[0]
-      additionalAccount = userData.value.accounts.filter((obj) => obj.type === 'ADDITIONAL')
-      // businessAccount = userData.value.accounts.filter((obj) => obj.type === 'BUSINESS')[0]
-    } catch (e) {
-      console.error(e)
-    }
-  }
-})
+// watchEffect(() => {
+//   if (!pending.value) {
+//     try {
+//       mainAccount = userData.value.accounts.filter((obj) => obj.type === 'MAIN')[0]
+//       additionalAccount = userData.value.accounts.filter((obj) => obj.type === 'ADDITIONAL')
+//       // businessAccount = userData.value.accounts.filter((obj) => obj.type === 'BUSINESS')[0]
+//     } catch (e) {
+//       console.error(e)
+//     }
+//   }
+// })
 </script>
 
 <template>
@@ -55,15 +63,27 @@ watchEffect(() => {
       <div class="aside-wallet">
         <h2>Wallet</h2>
         <div class="aside-accounts">
-          <div class="aside-account">
-            <h2>{{ mainAccount.balance }} ₲</h2>
-            <p>Total on your main account</p>
-            <p>{{mainAccount.account_number}}</p>
-          </div>
-          <div class="aside-account" v-for="account in additionalAccount">
-            <h2>{{ account.balance }} ₲</h2>
-            <p>{{ account.name }}</p>
-            <p>{{ account.account_number }}</p>
+          <!--          <div class="aside-account">-->
+          <!--            <h2>{{ mainAccount.balance }} ₲</h2>-->
+          <!--            <copy :text="mainAccount.account_number"/>-->
+          <!--            <p>Total on your main account</p>-->
+          <!--            <p>{{ mainAccount.account_number }}</p>-->
+          <!--          </div>-->
+          <!--          <div class="aside-account" v-for="account in additionalAccount">-->
+          <div class="aside-account" v-for="account in userData.accounts">
+
+            <div class="card-icon">
+              <div class="account-number">
+                <p>{{ formatNumber(account.account_number) }}</p>
+                <copy :text="account.account_number"/>
+              </div>
+            </div>
+            <section>
+              <p>{{ account.name }}</p>
+              <p>{{ account.balance }} ₲</p>
+            </section>
+            <!--            <p>{{ account.account_number }}</p>-->
+
           </div>
           <!--          <div class="aside-account">-->
           <!--            <h2>{{ businessAccount.balance }} ₲</h2>-->
@@ -120,5 +140,37 @@ aside {
 .new-product-button button:hover {
   cursor: pointer;
   transform: scale(1.05);
+}
+
+.aside-account {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-icon {
+  user-select: none;
+  background: #2451f0;
+  width: 76px;
+  height: 48px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+
+.account-number {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  justify-content: space-evenly;
+  font-size: 9pt;
+  font-weight: bold;
+  color: #fff;
+  background: #0000003d;
 }
 </style>

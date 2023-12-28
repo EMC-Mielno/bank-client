@@ -3,14 +3,6 @@ const nuxtApp = useNuxtApp()
 
 const {userTransaction, pending, error} = nuxtApp.$transactions
 
-let transactions = ref([])
-
-watchEffect(() => {
-  if (!pending.value) {
-    transactions = userTransaction.value
-  }
-})
-
 function formatDate(dateString) {
   const dateParts = dateString.split('.');
   const day = parseInt(dateParts[0]);
@@ -26,7 +18,7 @@ function formatDate(dateString) {
 
 <template>
   <div class="transaction-blocks">
-    <div class="transaction-day" v-for="(day, index) in  transactions">
+    <div class="transaction-day" v-for="(day, index) in  userTransaction">
       <h6>{{ formatDate(index) }}</h6>
       <hr>
       <div class="transactions">
@@ -37,95 +29,15 @@ function formatDate(dateString) {
               <div class="transaction-info">
                 <b>{{ transaction.sender_nickname }}</b>
               </div>
-              <span class="money"> <span v-if="transaction.type==='OUT'">-</span> {{ transaction.amount }} ₲</span>
+              <span class="money"> <span v-if="transaction.type==='OUT' && transaction.transfer_type_id !== 2">-</span> {{
+                  transaction.amount
+                }} ₲</span>
             </div>
             <p>{{ transaction.description }}</p>
           </article>
         </div>
       </div>
     </div>
-    <!--    <div class="transaction-day">-->
-    <!--      <h6>Sunday, 14 september</h6>-->
-    <!--      <hr>-->
-    <!--      <div class="transactions">-->
-    <!--        <div class="transaction">-->
-    <!--          <img src="/money-transfer.svg" alt="" class="transaction-logo">-->
-    <!--          <article>-->
-    <!--            <div class="transaction-info">-->
-    <!--              <div class="transaction-info">-->
-    <!--                <b>HarryPotter</b>-->
-    <!--              </div>-->
-    <!--              <span class="money">-50 ₲</span>-->
-    <!--            </div>-->
-    <!--            <p>Money transfer</p>-->
-    <!--          </article>-->
-    <!--        </div>-->
-    <!--        <div class="transaction">-->
-    <!--          <img src="/money-transfer.svg" alt="" class="transaction-logo">-->
-    <!--          <article>-->
-    <!--            <div class="transaction-info">-->
-    <!--              <b>HarryPotter</b>-->
-    <!--              <span class="money">-50 ₲</span>-->
-    <!--            </div>-->
-    <!--            <p>Money transfer</p>-->
-    <!--          </article>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
-    <!--    <div class="transaction-day">-->
-    <!--      <h6>Sunday, 14 september</h6>-->
-    <!--      <hr>-->
-    <!--      <div class="transactions">-->
-    <!--        <div class="transaction">-->
-    <!--          <img src="/money-transfer.svg" alt="" class="transaction-logo">-->
-    <!--          <article>-->
-    <!--            <div class="transaction-info">-->
-    <!--              <div class="transaction-info">-->
-    <!--                <b>HarryPotter</b>-->
-    <!--              </div>-->
-    <!--              <span class="money">-50 ₲</span>-->
-    <!--            </div>-->
-    <!--            <p>Money transfer</p>-->
-    <!--          </article>-->
-    <!--        </div>-->
-    <!--        <div class="transaction">-->
-    <!--          <img src="/money-transfer.svg" alt="" class="transaction-logo">-->
-    <!--          <article>-->
-    <!--            <div class="transaction-info">-->
-    <!--              <b>HarryPotter</b>-->
-    <!--              <span class="money">-50 ₲</span>-->
-    <!--            </div>-->
-    <!--            <p>Money transfer</p>-->
-    <!--          </article>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
-    <!--    <div class="transaction-day">-->
-    <!--      <h6>Sunday, 13 september</h6>-->
-    <!--      <hr>-->
-    <!--      <div class="transactions">-->
-    <!--        <div class="transaction">-->
-    <!--          <img src="/money-transfer.svg" alt="" class="transaction-logo">-->
-    <!--          <article>-->
-    <!--            <div class="transaction-info">-->
-    <!--              <b>HarryPotter</b>-->
-    <!--              <span class="money">-50 ₲</span>-->
-    <!--            </div>-->
-    <!--            <p>Money transfer</p>-->
-    <!--          </article>-->
-    <!--        </div>-->
-    <!--        <div class="transaction">-->
-    <!--          <img src="/money-transfer.svg" alt="" class="transaction-logo">-->
-    <!--          <article>-->
-    <!--            <div class="transaction-info">-->
-    <!--              <b>HarryPotter</b>-->
-    <!--              <span class="money">-50 ₲</span>-->
-    <!--            </div>-->
-    <!--            <p>Money transfer</p>-->
-    <!--          </article>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
   </div>
 </template>
 

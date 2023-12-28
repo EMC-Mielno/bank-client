@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import Checkmark from "~/components/ui/checkmark.vue";
+import ErrorBlock from "~/components/ui/errorBlock.vue";
+
 const nuxtApp = useNuxtApp()
 const token = useCookie('token')
 const runtimeConfig = useRuntimeConfig()
-const {userData, refresh} = nuxtApp.$user
+const {userData,refresh} = nuxtApp.$user
 
 const formData = ref({
   sender_account: -1,
@@ -37,7 +40,6 @@ function transfer() {
       error.value = true
       errorText.value = data.error
     } else {
-      refresh()
       complete.value = true;
       error.value = false
       errorText.value = ''
@@ -46,6 +48,7 @@ function transfer() {
         nickname: null,
         amount: null
       }
+      refresh()
     }
   }).catch(error => {
     // Обработка ошибки

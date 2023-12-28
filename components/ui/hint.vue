@@ -20,7 +20,7 @@ span.hint {
   position: absolute;
   bottom: 0;
   left: 30px;
-  width: 440px;
+  width: 430px;
   background: #f0f1f3;
   padding: 15px;
   border-radius: 10px;
