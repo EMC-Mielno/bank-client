@@ -52,6 +52,12 @@ function formatNumber(number) {
 //     }
 //   }
 // })
+const router = useRouter()
+
+function openAccount(account_id) {
+  router.push(`/accounts/${account_id}`)
+}
+
 </script>
 
 <template>
@@ -70,7 +76,8 @@ function formatNumber(number) {
           <!--            <p>{{ mainAccount.account_number }}</p>-->
           <!--          </div>-->
           <!--          <div class="aside-account" v-for="account in additionalAccount">-->
-          <div class="aside-account" v-for="account in userData.accounts">
+          <div class="aside-account" v-for="account in userData.accounts"
+               v-on:click.self="openAccount(account.account_id)">
 
             <div class="card-icon">
               <div class="account-number">
@@ -78,17 +85,11 @@ function formatNumber(number) {
                 <copy :text="account.account_number"/>
               </div>
             </div>
-            <section>
+            <section class="card-info" v-on:click="openAccount(account.account_id)">
               <p>{{ account.name }}</p>
               <p>{{ account.balance }} ₲</p>
             </section>
-            <!--            <p>{{ account.account_number }}</p>-->
-
           </div>
-          <!--          <div class="aside-account">-->
-          <!--            <h2>{{ businessAccount.balance }} ₲</h2>-->
-          <!--            <p>Total on your business account</p>-->
-          <!--          </div>-->
         </div>
         <div class="new-product-button">
           <NuxtLink to="/new">
@@ -114,15 +115,20 @@ aside {
 
 .aside-wallet {
   background: #F0F1F3;
-  padding: 25px;
+  //padding: 25px;
   border-radius: 15px;
 }
 
+h2 {
+  margin: 25px;
+}
+
 .aside-wallet > *, .aside-account {
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
 .new-product-button {
+  margin: 25px;
   display: flex;
   align-items: center;
 }
@@ -146,6 +152,13 @@ aside {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding: 10px 25px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.aside-account:hover {
+  background: #ddd;
 }
 
 .card-icon {
@@ -157,7 +170,6 @@ aside {
   overflow: hidden;
   border-radius: 5px;
 }
-
 
 .account-number {
   display: flex;
@@ -172,5 +184,9 @@ aside {
   font-weight: bold;
   color: #fff;
   background: #0000003d;
+}
+
+.card-info {
+
 }
 </style>

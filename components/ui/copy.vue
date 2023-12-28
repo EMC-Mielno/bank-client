@@ -21,8 +21,8 @@ const copyText = () => {
 
 <template>
   <div @click="copyText" :class="{ 'copied': isCopied }">
-    <img alt="" src="@/public/icons/copy-regular.svg" v-if="!isCopied"/>
-    <img alt="" src="@/public/icons/check-solid.svg" v-else/>
+    <img alt="" src="/icons/copy-regular.svg" v-if="!isCopied"/>
+    <img alt="" src="/icons/check-solid.svg" v-else/>
   </div>
 </template>
 
