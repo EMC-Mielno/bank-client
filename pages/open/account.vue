@@ -4,6 +4,8 @@ import ErrorBlock from "~/components/ui/errorBlock.vue";
 
 const token = useCookie('token')
 const runtimeConfig = useRuntimeConfig()
+const nuxtApp = useNuxtApp()
+const {refresh} = nuxtApp.$user
 
 const complete = ref(false)
 const error = ref(false)
@@ -35,6 +37,7 @@ function createAccount() {
       error.value = false
       errorText.value = ''
       name.value = ''
+      refresh()
     }
   }).catch(error => {
     // Обработка ошибки
