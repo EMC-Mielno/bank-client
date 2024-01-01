@@ -2,6 +2,7 @@
 import Copy from "~/components/ui/copy.vue";
 
 const nuxtApp = useNuxtApp()
+const router = useRouter()
 
 const {userData, pending, error} = nuxtApp.$user
 
@@ -11,48 +12,6 @@ function formatNumber(number) {
   return formattedNumber;
 }
 
-// interface account {
-//   account_id: number;
-//   type: string;
-//   name: string;
-//   total_income: number;
-//   total_outcome: number;
-//   balance: number;
-//   account_number: string;
-// }
-//
-// let mainAccount: Ref<account> = ref({
-//   "account_id": 0,
-//   "type": "",
-//   "name": "",
-//   "total_income": 0,
-//   "total_outcome": 0,
-//   "balance": 0,
-//   "account_number": ""
-// });
-// let additionalAccount: Ref<account[]> = ref([]);
-// let businessAccount: Ref<account> = ref({
-//   "account_id": 0,
-//   "type": "",
-//   "name": "",
-//   "total_income": 0,
-//   "total_outcome": 0,
-//   "balance": 0,
-//   "account_number": ""
-// });
-
-// watchEffect(() => {
-//   if (!pending.value) {
-//     try {
-//       mainAccount = userData.value.accounts.filter((obj) => obj.type === 'MAIN')[0]
-//       additionalAccount = userData.value.accounts.filter((obj) => obj.type === 'ADDITIONAL')
-//       // businessAccount = userData.value.accounts.filter((obj) => obj.type === 'BUSINESS')[0]
-//     } catch (e) {
-//       console.error(e)
-//     }
-//   }
-// })
-const router = useRouter()
 
 function openAccount(account_id) {
   router.push(`/accounts/${account_id}`)
@@ -61,7 +20,10 @@ function openAccount(account_id) {
 </script>
 
 <template>
-  <div :key='userData'>
+  <div v-if="pending">
+    Loading
+  </div>
+  <div :key='userData' v-else>
     <aside>
       <NuxtLink to="/dashboard">
         <img src="/logo.png" alt="Logo" class="logo">

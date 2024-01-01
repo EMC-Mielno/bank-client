@@ -49,10 +49,14 @@ input[type="submit"]:hover {
   background: #3b3b3b;
 }
 
+form{
+  display: flex;
+  flex-direction: column;
+}
+
 .main-block-header {
   margin: 25px 0;
 }
-
 
 //Skeleton
 .skeleton {

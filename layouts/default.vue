@@ -4,6 +4,11 @@ import TheHeader from "~/components/TheHeader.vue";
 const runtimeConfig = useRuntimeConfig()
 const token = useCookie('token')
 const nuxtApp = useNuxtApp()
+const router = useRouter()
+
+if (!token.value){
+  router.push(`/auth`)
+}
 
 function getUserData() {
   const {

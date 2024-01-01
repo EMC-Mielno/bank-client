@@ -47,10 +47,10 @@ function login() {
   }).then((response) => {
     return response.json();
   }).then((data) => {
-    console.log(data)
+    // console.log(data)
     if (data['token']) {
       token.value = data['token']
-      router.push('/')
+      router.push('/dashboard')
     }
   }).catch((err) => {
     console.error("Fetch error: ", err);

@@ -55,6 +55,12 @@ function transfer() {
     console.error('Error:', error);
   });
 }
+
+function formatNumber(number) {
+  let strNumber = number.toString();
+  let formattedNumber = '··' + strNumber.slice(-4);
+  return formattedNumber;
+}
 </script>
 
 <template>
@@ -66,7 +72,7 @@ function transfer() {
       <select name="account_id" v-model="formData.sender_account" required>
         <option value="-1" selected disabled>--Please choose an account--</option>
         <option v-for="account in userData.accounts" v-bind:value="account.account_number">
-          {{ account.name }}
+          {{ account.name }} ({{ formatNumber(account.account_number)}})
         </option>
       </select>
       <label for="nickname">Recipient's nickname:</label>
