@@ -1,11 +1,12 @@
 <script setup lang="ts">
 import ErrorBlock from "~/components/ui/errorBlock.vue";
 import Checkmark from "~/components/ui/checkmark.vue";
+import CardOption from "~/components/ui/cardOption.vue";
 
 const nuxtApp = useNuxtApp()
 const token = useCookie('token')
 const runtimeConfig = useRuntimeConfig()
-const {userData, refresh} = nuxtApp.$user
+const {userData, pending, refresh} = nuxtApp.$user
 
 const formData = ref({
   sender_account: -1,
@@ -55,16 +56,12 @@ function transfer() {
     console.error('Error:', error);
   });
 }
-
-function formatNumber(number) {
-  let strNumber = number.toString();
-  let formattedNumber = '··' + strNumber.slice(-4);
-  return formattedNumber;
-}
 </script>
 
 <template>
   <div>
+    <card-option v-if="!pending" :accounts="userData.accounts"/>
+
     <checkmark :complete="complete" @toggleComplete="complete = !complete"/>
     <form class="transfer-form" v-on:submit.prevent="transfer">
       <h2 class="main-block-header">Transfer by account number</h2>
@@ -72,7 +69,7 @@ function formatNumber(number) {
       <select name="account_id" v-model="formData.sender_account" required>
         <option value="-1" selected disabled>--Please choose an account--</option>
         <option v-for="account in userData.accounts" v-bind:value="account.account_number">
-          {{ account.name }} ({{ formatNumber(account.account_number)}})
+          {{ account.name }} ({{ formatCardNumber(account.account_number) }})
         </option>
       </select>
       <label for="account_id">Recipient's account number:</label>

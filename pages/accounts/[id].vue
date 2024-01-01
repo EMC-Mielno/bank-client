@@ -18,12 +18,6 @@ function getAccountById(accounts, id) {
   return accounts.find(account => account.account_id === id);
 }
 
-function formatNumber(number) {
-  let strNumber = number.toString();
-  let formattedNumber = '··' + strNumber.slice(-4);
-  return formattedNumber;
-}
-
 let account = ref()
 let account_name = ref('')
 watchEffect(() => {
@@ -66,16 +60,18 @@ function changeName() {
     console.error('Error:', error);
   });
 }
-
 </script>
 
 <template>
-  <div class="account-block">
+  <div v-if="pending">
+    Loading...
+  </div>
+  <div class="account-block" v-else>
     <div class="back">
-      <NuxtLink to="/"><span>⬅</span> Back</NuxtLink>
+      <NuxtLink to="/dashboard"><span>⬅</span> Back</NuxtLink>
     </div>
     <div class="name">
-      <p>Current account {{ formatNumber(account.account_number) }}</p>
+      <p>Current account {{ formatCardNumber(account.account_number) }}</p>
       <div v-if="!edit" class="text-name">
         <h2>{{ account.name }}</h2>
         <img v-if="account.type !== 'MAIN'" src="/icons/pen-solid.svg" v-on:click="edit = !edit" alt="">
