@@ -50,7 +50,8 @@ function login() {
     // console.log(data)
     if (data['token']) {
       token.value = data['token']
-      router.push('/dashboard')
+      // router.push('/dashboard')
+      window.location.href = '/dashboard';
     }
   }).catch((err) => {
     console.error("Fetch error: ", err);
