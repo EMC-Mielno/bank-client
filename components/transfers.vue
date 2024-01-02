@@ -4,7 +4,7 @@
 <template>
   <div class="transfer-buttons">
     <NuxtLink to="/transfer-between" class="transfer-button">
-      <img src="/account-transfer.svg" alt="" class="transfer-button-icon">
+      <img src="/between-transfer.svg" alt="" class="transfer-button-icon">
       <p class="transfer-button-name">Between your accounts</p>
     </NuxtLink>
     <NuxtLink to="/transfer-number" class="transfer-button">
@@ -45,5 +45,9 @@ img.transfer-button-icon {
   border-radius: 9px;
   width: 32px;
   height: 32px;
+}
+
+img[src="/between-transfer.svg"] {
+  filter: invert(1);
 }
 </style>
