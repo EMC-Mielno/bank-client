@@ -3,18 +3,19 @@
 import CardMini from "~/components/ui/cardMini.vue";
 
 const props = defineProps(['accounts'])
-const accounts = props.accounts
+const emit = defineEmits(['choosedCard'])
 
+const accounts = props.accounts
 const opened = ref(false)
 
 const choosen = ref(accounts.find(item => item.type === 'MAIN'))
-
-function choose(account_id) {
-  choosen.value = accounts.find(item => item.account_id === account_id)
+emit('choosedCard', choosen.value);
+function choose(account_number) {
+  choosen.value = accounts.find(item => item.account_number === account_number)
   opened.value = false
-  handleChange(account_id)
-}
+  emit('choosedCard', choosen.value);
 
+}
 
 </script>
 
@@ -28,10 +29,10 @@ function choose(account_id) {
           <b> {{ choosen.balance }} ₲</b>
         </div>
       </div>
-      <span class="arrow">^|</span>
+      <span class="arrow">&#9660;</span>
     </div>
     <div class="dropped" v-if="opened">
-      <div class="card-info" v-for="account in accounts" @click="choose(account.account_id)">
+      <div class="card-info" v-for="account in accounts" @click="choose(account.account_number)">
         <card-mini :number="account.account_number"/>
         <div class="amount">
           <p>{{ account.name }}</p>
@@ -53,9 +54,10 @@ function choose(account_id) {
 }
 
 .cardOption {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
   position: relative;
+  z-index: 10;
 }
 
 .drop-card {

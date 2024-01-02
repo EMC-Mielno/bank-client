@@ -2,6 +2,7 @@
 import ErrorBlock from "~/components/ui/errorBlock.vue";
 import Checkmark from "~/components/ui/checkmark.vue";
 import CardOption from "~/components/ui/cardOption.vue";
+import CardInput from "~/components/ui/cardInput.vue";
 
 const nuxtApp = useNuxtApp()
 const token = useCookie('token')
@@ -16,7 +17,7 @@ const formData = ref({
 
 const complete = ref(false)
 const error = ref(false)
-const errorText = ref('')
+const errorText = ref('No errors')
 
 function transfer() {
   const url = `${runtimeConfig.public.apiBase}/me/account-transfer`;
@@ -56,33 +57,40 @@ function transfer() {
     console.error('Error:', error);
   });
 }
+
+const preAmount = ref()
+
+function handleSenderCardChange(account) {
+  formData.value.sender_account = account.account_number
+  preAmount.value = account.balance
+}
+
+function handleReceiverCardChange(account_id) {
+  formData.value.receiver_account = account_id
+}
+
+function allFunds() {
+  formData.value.amount = preAmount.value
+}
 </script>
 
 <template>
   <div>
-    <card-option v-if="!pending" :accounts="userData.accounts"/>
-
     <checkmark :complete="complete" @toggleComplete="complete = !complete"/>
     <form class="transfer-form" v-on:submit.prevent="transfer">
-      <h2 class="main-block-header">Transfer by account number</h2>
-      <label for="account_id">Your account:</label>
-      <select name="account_id" v-model="formData.sender_account" required>
-        <option value="-1" selected disabled>--Please choose an account--</option>
-        <option v-for="account in userData.accounts" v-bind:value="account.account_number">
-          {{ account.name }} ({{ formatCardNumber(account.account_number) }})
-        </option>
-      </select>
-      <label for="account_id">Recipient's account number:</label>
-      <input type="number" name="recipient_id" id="" v-model="formData.receiver_account"
-             placeholder="Recipient's account number" required>
-      <label for="account_id">Amount:</label>
+      <h2>Transfer by account number</h2>
+      <errorBlock v-bind:text="errorText" :invisible="!error"/>
+      <card-option @choosedCard="handleSenderCardChange" v-if="!pending" :accounts="userData.accounts" :key="formData"/>
+      <card-input @choosedCard="handleReceiverCardChange" :key="formData"/>
       <input type="number" name="amount" id="" v-model="formData.amount" placeholder="0 ₲" min="1">
+      <div class="all-funds" v-if="preAmount>0" @click="allFunds">All {{ preAmount }} ₲</div>
       <input type="submit" value="Continue">
-      <errorBlock v-bind:text="errorText" v-if="error"/>
     </form>
   </div>
 </template>
 
 <style scoped lang="scss">
-
+input {
+  margin: 0;
+}
 </style>

@@ -2,15 +2,16 @@
 
 import Copy from "~/components/ui/copy.vue";
 
-const props = defineProps(['number'])
+const props = defineProps(['number', 'copy'])
 const account_number = props.number
+const copy = props.copy || false
 </script>
 
 <template>
   <div class="card-icon">
     <div class="account-number">
       <p>{{ formatCardNumber(account_number) }}</p>
-      <copy :text="account_number"/>
+      <copy v-if="copy" :text="account_number"/>
     </div>
   </div>
 </template>

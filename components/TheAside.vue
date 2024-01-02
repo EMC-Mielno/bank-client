@@ -27,7 +27,7 @@ function openAccount(account_id) {
         <div class="aside-accounts">
           <div class="aside-account" v-for="account in userData.accounts"
                v-on:click.self="openAccount(account.account_id)">
-            <card-mini :number="account.account_number"/>
+            <card-mini :copy="true" :number="account.account_number"/>
             <section class="card-info" v-on:click="openAccount(account.account_id)">
               <p>{{ account.name }}</p>
               <p>{{ account.balance }} ₲</p>

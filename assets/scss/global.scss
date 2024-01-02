@@ -28,7 +28,7 @@ select, input {
   padding: 15px;
   border: none;
   border-radius: 5px;
-  width: -webkit-fill-available;
+  //width: 100%;
   outline: none;
   margin-bottom: 15px;
   font-size: 16px;
@@ -49,13 +49,42 @@ input[type="submit"]:hover {
   background: #3b3b3b;
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
 }
 
+.transfer-form {
+  box-shadow: 0 0 20px 1px #0000002e;
+  margin: 15px auto 0 auto;
+  padding: 15px;
+  border-radius: 15px;
+  width: 90%;
+  gap: 20px;
+}
+
 .main-block-header {
   margin: 25px 0;
+}
+
+.all-funds {
+  padding: 5px;
+  border: 1px solid;
+  border-radius: 5px;
+  width: fit-content;
+  user-select: none;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input[type='number'],
+input[type="number"]:hover,
+input[type="number"]:focus {
+  appearance: none;
+  -moz-appearance: textfield;
 }
 
 //Skeleton

@@ -1,21 +1,23 @@
 <script setup lang="ts">
-const props = defineProps(['text'])
+const props = defineProps(['text', 'invisible'])
 
-const errorText = ref(props.text)
 </script>
 
 <template>
-  <div>
-    {{ errorText }}
+  <div :class="props.invisible?'invisible':''">
+    {{ props.text }}
   </div>
 </template>
 
 <style scoped lang="scss">
+.invisible {
+  opacity: 0;
+}
+
 div {
   border: 1px solid #f00;
   padding: 15px;
   border-radius: 5px;
   background: #ffdee6;
-  margin-bottom: 10px;
 }
 </style>

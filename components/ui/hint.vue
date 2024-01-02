@@ -19,7 +19,7 @@ span.hint-button {
 span.hint {
   position: absolute;
   bottom: 0;
-  left: 30px;
+  left: 0;
   width: 430px;
   background: #f0f1f3;
   padding: 15px;
