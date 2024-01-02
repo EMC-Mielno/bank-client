@@ -20,7 +20,7 @@ const formData = ref({
 
 const complete = ref(false)
 const error = ref(false)
-const errorText = ref('')
+const errorText = ref('No errors')
 
 function transfer() {
   const url = `${runtimeConfig.public.apiBase}/me/withdraw`;
@@ -79,7 +79,7 @@ function handleNicknameChange(nickname) {
   <div v-else>
     <checkmark :complete="complete" @toggleComplete="complete = !complete"/>
     <form class="transfer-form" v-on:submit.prevent="transfer">
-      <h2 class="main-block-header">Withdraw</h2>
+      <h2>Withdraw</h2>
       <errorBlock v-bind:text="errorText" :invisible="!error"/>
       <card-option @choosedCard="handleSenderCardChange" :accounts="userData.accounts"
                    :key="formData"/>

@@ -3,6 +3,10 @@
 
 <template>
   <div class="transfer-buttons">
+    <NuxtLink to="/transfer-between" class="transfer-button">
+      <img src="/account-transfer.svg" alt="" class="transfer-button-icon">
+      <p class="transfer-button-name">Between your accounts</p>
+    </NuxtLink>
     <NuxtLink to="/transfer-number" class="transfer-button">
       <img src="/account-transfer.svg" alt="" class="transfer-button-icon">
       <p class="transfer-button-name">By account number</p>
