@@ -8,6 +8,7 @@ const runtimeConfig = useRuntimeConfig()
 
 const {refresh: userRefresh} = nuxtApp.$user
 const {userWithdraws, refresh} = nuxtApp.$withdraws
+const {refresh: transactionsRefresh} = nuxtApp.$transactions
 
 const complete = ref(false)
 const error = ref(false)
@@ -33,6 +34,7 @@ function cancel(id) {
       errorText.value = ''
       refresh()
       userRefresh()
+      transactionsRefresh()
     }
   }).catch(error => {
     // Обработка ошибки

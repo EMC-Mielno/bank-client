@@ -10,6 +10,8 @@ const token = useCookie('token')
 const runtimeConfig = useRuntimeConfig()
 const {userData, pending: userPending, refresh: userRefresh} = nuxtApp.$user
 const {userWithdraws, pending: withdrawsPending, refresh: withdrawRefresh} = nuxtApp.$withdraws
+const {refresh: transactionsRefresh} = nuxtApp.$transactions
+
 
 const formData = ref({
   account_id: -1,
@@ -57,6 +59,7 @@ function transfer() {
       }
       userRefresh()
       withdrawRefresh()
+      transactionsRefresh()
     }
   }).catch(error => {
     // Обработка ошибки
