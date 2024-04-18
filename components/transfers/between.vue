@@ -18,6 +18,8 @@ const formData = ref({
 const complete = ref(false)
 const error = ref(false)
 const errorText = ref('No errors')
+const toOption = ref(false)
+const fromOption = ref(false)
 
 function transfer() {
   const url = `${runtimeConfig.public.apiBase}/me/account-transfer`;
@@ -72,6 +74,14 @@ function handleReceiverCardChange(account) {
 function allFunds() {
   formData.value.amount = preAmount.value
 }
+
+function fromClick() {
+  fromOption.value = !fromOption
+}
+
+function toClick() {
+toOption.value = !toOption.value
+}
 </script>
 
 <template>
@@ -80,15 +90,17 @@ function allFunds() {
     <form class="transfer-form" v-on:submit.prevent="transfer">
       <h2>Transfer between your accounts</h2>
       <errorBlock v-bind:text="errorText" :invisible="!error"/>
-      <section>
+      <section class="from">
         <p>From:</p>
-        <card-option @choosedCard="handleSenderCardChange" v-if="!pending" :accounts="userData.accounts"
-                     :key="formData"/>
+        <card-option @choosedCard="handleSenderCardChange" @click="fromClick" v-if="!pending"
+                     :accounts="userData.accounts"
+                     :key="formData" :opened="fromOption"/>
       </section>
-      <section>
+      <section class="to">
         <p>To:</p>
-        <card-option @choosedCard="handleReceiverCardChange" v-if="!pending" :accounts="userData.accounts"
-                     :key="formData"/>
+        <card-option @choosedCard="handleReceiverCardChange" @click="toClick" v-if="!pending"
+                     :accounts="userData.accounts"
+                     :key="formData" :opened="toOption"/>
       </section>
       <input type="number" name="amount" id="" v-model="formData.amount" placeholder="0 ₲" min="1">
       <div class="all-funds" v-if="preAmount>0" @click="allFunds">All {{ preAmount }} ₲</div>
@@ -100,5 +112,11 @@ function allFunds() {
 <style scoped lang="scss">
 input {
   margin: 0;
+}
+.from{
+  z-index: 5;
+}
+.to{
+  z-index: 0;
 }
 </style>

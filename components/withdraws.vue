@@ -51,6 +51,7 @@ function cancel(id) {
         <b>Nickname: {{ withdraw.nickname }}</b>
         <p>Amount: {{ withdraw.amount }}</p>
         <p>Comment: <br>{{ withdraw.comment }}</p>
+        <p>Bank comment: <br>{{ withdraw.bankComment }}</p>
       </section>
       <section class="status-block">
         <p class="status"

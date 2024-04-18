@@ -14,17 +14,27 @@ import Hint from "~/components/ui/hint.vue";
   </div>
   <h2 class="main-block-header">Fill in the form</h2>
   <form v-on:submit.prevent="">
-    <label for="cashback">Cashback percentage: <hint>The maximum percentage that will be returned to the user from the purchase price. You can specify from 0 to 30.</hint></label>
+    <label for="cashback">Cashback percentage:
+      <hint>The maximum percentage that will be returned to the user from the purchase price. You can specify from 0 to
+        30.
+      </hint>
+    </label>
     <input type="number" name="cashback" id="cashback" placeholder="15%" min="0" max="30" pattern="\d{1,2}">
-    <div class="checkbox">
+    <div v-if="false" class="checkbox">
       <input type="checkbox" id="scales" name="scales"/>
       <label for="scales">Agree</label>
     </div>
-    <input type="submit" value="Open an business account">
+    <input type="submit" value="Unavailable yet" disabled>
+    <!--    <input type="submit" value="Open an business account">-->
   </form>
 </template>
 
 <style scoped lang="scss">
+
+input:disabled, input:disabled:hover {
+  background: #767676;
+}
+
 .checkbox {
   display: flex;
 }
