@@ -11,7 +11,7 @@ let nickname: Ref<string> = ref('');
 watchEffect(() => {
   if (!pending.value) {
     try {
-      nickname = userData.value.nickname
+      nickname.value = userData.value.nickname
     } catch (e) {
       token.value = undefined
       router.push('/auth')

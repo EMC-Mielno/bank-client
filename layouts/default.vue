@@ -6,9 +6,13 @@ const token = useCookie('token')
 const nuxtApp = useNuxtApp()
 const router = useRouter()
 
-if (!token.value){
+if (!token.value) {
   router.push(`/auth`)
 }
+
+useHead({
+  title: 'Mielno Bank'
+})
 
 function getUserData() {
   const {
@@ -23,6 +27,7 @@ function getUserData() {
         }
       }
   )
+
   nuxtApp.provide('user', {userData: userData, pending: pending, error: error, refresh: refresh})
 }
 
@@ -42,6 +47,7 @@ function getUserTransaction() {
 
   nuxtApp.provide('transactions', {userTransaction: userTransaction, pending: pending, error: error, refresh: refresh})
 }
+
 function getUserWithdraws() {
   const {
     data: userWithdraws,
@@ -59,6 +65,33 @@ function getUserWithdraws() {
   nuxtApp.provide('withdraws', {userWithdraws: userWithdraws, pending: pending, error: error, refresh: refresh})
 }
 
+function checkToken() {
+  fetch(`${runtimeConfig.public.apiBase}/me/`, {
+    headers: {
+      'Authorization': token.value
+    }
+  }).then((response) => {
+    switch (response.status) {
+      case 403:
+        token.value = null
+        router.push('/')
+        break;
+      case 401:
+        token.value = null
+        router.push('/')
+        break;
+      case 200:
+        break;
+    }
+    return response.json();
+  }).then((data) => {
+  }).catch((err) => {
+    console.error("Невозможно отправить запрос", err);
+  });
+}
+
+checkToken()
+
 getUserData()
 getUserTransaction()
 getUserWithdraws()
@@ -68,10 +101,10 @@ getUserWithdraws()
 <template>
   <div id="main-app">
     <TheAside/>
-        <div class="main-content">
-          <TheHeader/>
-          <NuxtPage/>
-        </div>
+    <div class="main-content">
+      <TheHeader/>
+      <NuxtPage/>
+    </div>
   </div>
 </template>
 
