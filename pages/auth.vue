@@ -1,17 +1,5 @@
 <script setup lang="ts">
 
-// import { PublicClientApplication } from "@azure/msal-browser";
-//
-// const msalConfig = {
-//   auth: {
-//     clientId: 'e432033e-7351-4cdf-9f87-7808e5b383cd',
-//     authority: "https://login.microsoftonline.com/consumers",
-//     redirectUri: "http://localhost:3000/",
-//   }
-// };
-//
-// const msalInstance = await PublicClientApplication.createPublicClientApplication(msalConfig);
-
 definePageMeta({
   layout: 'empty'
 })
@@ -20,20 +8,13 @@ useHead({
 })
 
 const runtimeConfig = useRuntimeConfig()
-const router = useRouter();
 const token = useCookie('token')
 
 let username: Ref<string> = ref('');
 let password: Ref<string> = ref('');
 
 function login() {
-
-  // msalInstance.loginPopup({
-  //   redirectUri: "http://localhost:3000/blank.html"
-  // });
-  //
-  // return
-  const data = {
+    const data = {
     nickname: username.value,
     password: password.value
   }
@@ -47,10 +28,8 @@ function login() {
   }).then((response) => {
     return response.json();
   }).then((data) => {
-    // console.log(data)
     if (data['token']) {
       token.value = data['token']
-      // router.push('/dashboard')
       window.location.href = '/dashboard';
     }
   }).catch((err) => {
