@@ -68,7 +68,7 @@ function changeName() {
   </div>
   <div class="account-block" v-else>
     <div class="back">
-      <NuxtLink to="/dashboard"><span>⬅</span> Back</NuxtLink>
+      <NuxtLink to="/online/dashboard"><span>⬅</span> Back</NuxtLink>
     </div>
     <div class="name">
       <p>Current account {{ formatCardNumber(account.account_number) }}</p>

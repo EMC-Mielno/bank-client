@@ -30,7 +30,7 @@ function login() {
   }).then((data) => {
     if (data['token']) {
       token.value = data['token']
-      window.location.href = '/dashboard';
+      window.location.href = '/online/dashboard';
     }
   }).catch((err) => {
     console.error("Fetch error: ", err);
@@ -40,22 +40,18 @@ function login() {
 </script>
 
 <template>
-  <header>
-    <img src="/logo.png" alt="Logo" class="logo">
-    <div class="login">
-      <h1>
-        Hello!<br>
-        Signup/Login to Bank of Mielno
-      </h1>
-      <form v-on:submit.prevent="login">
-        <input type="text" placeholder="Username" v-model="username" minlength="3" required>
-        <!--        <input type="password" placeholder="Password" v-model="password" minlength="8" required>-->
-        <input type="password" placeholder="Password" v-model="password" minlength="4" required>
-        <input type="submit" value="Go">
-      </form>
-    </div>
-
-  </header>
+  <div class="login">
+    <h1>
+      Hello!<br>
+      Signup/Login to Bank of Mielno
+    </h1>
+    <form v-on:submit.prevent="login">
+      <input type="text" placeholder="Username" v-model="username" minlength="3" required>
+      <!--        <input type="password" placeholder="Password" v-model="password" minlength="8" required>-->
+      <input type="password" placeholder="Password" v-model="password" minlength="4" required>
+      <input type="submit" value="Go">
+    </form>
+  </div>
 </template>
 
 <style scoped lang="scss">

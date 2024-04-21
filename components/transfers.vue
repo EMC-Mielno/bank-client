@@ -3,19 +3,19 @@
 
 <template>
   <div class="transfer-buttons">
-    <NuxtLink to="/transfer-between" class="transfer-button">
+    <NuxtLink to="/online/transfer-between" class="transfer-button">
       <img src="/between-transfer.svg" alt="" class="transfer-button-icon">
       <p class="transfer-button-name">Between your accounts</p>
     </NuxtLink>
-    <NuxtLink to="/transfer-number" class="transfer-button">
+    <NuxtLink to="/online/transfer-number" class="transfer-button">
       <img src="/account-transfer.svg" alt="" class="transfer-button-icon">
       <p class="transfer-button-name">By account number</p>
     </NuxtLink>
-    <NuxtLink to="/transfer-nickname" class="transfer-button">
+    <NuxtLink to="/online/transfer-nickname" class="transfer-button">
       <img src="/nickname-transfer.svg" alt="" class="transfer-button-icon">
       <p class="transfer-button-name">By nickname</p>
     </NuxtLink>
-    <NuxtLink to="/transfer-withdraw" class="transfer-button">
+    <NuxtLink to="/online/transfer-withdraw" class="transfer-button">
       <img src="/withdraw-icon.svg" alt="" class="transfer-button-icon">
       <p class="transfer-button-name">Withdraw</p>
     </NuxtLink>

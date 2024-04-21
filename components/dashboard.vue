@@ -22,12 +22,12 @@ watchEffect(() => {
 
 <template>
   <h1 class="main-name">Hey, {{ nickname }}</h1>
-  <!--  <p class="main-suggestion">Suggestions for you</p>-->
-  <!--  <suggestions/>-->
+<!--    <p class="main-suggestion">Suggestions for you</p>-->
+<!--    <suggestions/>-->
   <h2 class="main-block-header">Transfer</h2>
   <transfers/>
   <h2 class="main-block-header">
-    <NuxtLink to="/transactions">Recent transactions ></NuxtLink>
+    <NuxtLink to="/online/transactions">Recent transactions ></NuxtLink>
   </h2>
   <transaction/>
 </template>

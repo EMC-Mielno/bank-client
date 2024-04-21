@@ -104,12 +104,17 @@ getUserWithdraws()
     <div class="main-content">
       <TheHeader/>
       <NuxtPage/>
+      <TheFooter/>
     </div>
   </div>
 </template>
 
 <style lang="scss">
 @use '@/assets/scss/global.scss' as *;
+
+.default-page{
+  margin-bottom: 25px;
+}
 
 #main-app {
   display: flex;

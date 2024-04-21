@@ -14,13 +14,16 @@ function logout() {
     <header>
       <ul>
         <li>
-          <NuxtLink to="/dashboard">main</NuxtLink>
+          <NuxtLink to="/online/dashboard">main</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/transfer-number">Transfers</NuxtLink>
+          <NuxtLink to="/online/transfer-number">Transfers</NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/transactions">Transactions</NuxtLink>
+          <NuxtLink to="/online/transactions">Transactions</NuxtLink>
+        </li>
+        <li>
+          <NuxtLink to="/online/topup">Top up</NuxtLink>
         </li>
       </ul>
       <ul>

@@ -4,6 +4,12 @@
   font-style: normal;
   font-weight: normal;
 }
+@font-face {
+  font-family: "Inter-Black";
+  src: url("/fonts/Inter/Inter-Black.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 900;
+}
 
 body {
   font-family: "Inter", serif;

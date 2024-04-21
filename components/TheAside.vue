@@ -8,7 +8,7 @@ const router = useRouter()
 const {userData, pending, error} = nuxtApp.$user
 
 function openAccount(account_id) {
-  router.push(`/accounts/${account_id}`)
+  router.push(`/online/accounts/${account_id}`)
 }
 
 </script>
@@ -19,7 +19,7 @@ function openAccount(account_id) {
   </div>
   <div :key='userData' v-else>
     <aside>
-      <NuxtLink to="/dashboard">
+      <NuxtLink to="/online/dashboard">
         <img src="/logo.png" alt="Logo" class="logo">
       </NuxtLink>
       <div class="aside-wallet">
@@ -35,7 +35,7 @@ function openAccount(account_id) {
           </div>
         </div>
         <div class="new-product-button">
-          <NuxtLink to="/new">
+          <NuxtLink to="/online/new">
             <button>+</button>
           </NuxtLink>
           <article>
