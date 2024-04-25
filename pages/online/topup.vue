@@ -25,7 +25,7 @@
     <img src="/imgs/topup/bank.jpg" alt="bank">
     <p>3. Enter the special booth for topping up your account. In front of you will be a machine for exchanging gold for
       money.</p>
-    <img src="/imgs/topup/booth.jpg" alt="booth">
+    <img src="/imgs/topup/booth.png" alt="booth">
     <p>4. Rename the gold you are going to top up to the nickname used in your bank account.</p>
     <img src="/imgs/topup/nickname.jpg" alt="nickname">
     <img src="/imgs/topup/renaming.jpg" alt="renaming">
